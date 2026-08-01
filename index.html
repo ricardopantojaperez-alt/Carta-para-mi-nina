@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Carta para mi niña ❤️</title>
 
@@ -21,25 +21,17 @@
     }
 
     /* =========================
-       AUDIO
-       ========================= */
-
-    #backgroundMusic {
-      display: none;
-    }
-
-
-    /* =========================
        PANTALLAS
        ========================= */
 
     .screen {
       display: none;
+
       justify-content: center;
       align-items: center;
 
-      height: 100vh;
       width: 100%;
+      height: 100vh;
 
       text-align: center;
 
@@ -52,7 +44,7 @@
 
 
     /* =========================
-       PANTALLA DE CONTRASEÑA
+       CONTRASEÑA
        ========================= */
 
     .password-screen {
@@ -62,7 +54,6 @@
 
     .password-screen h2 {
       color: #ad1457;
-      margin-bottom: 10px;
     }
 
     .hint {
@@ -71,13 +62,9 @@
       font-size: 16px;
     }
 
-
-    /* =========================
-       DISPLAY DE CONTRASEÑA
-       ========================= */
-
     .input-display {
       font-size: 24px;
+
       margin-top: 20px;
 
       letter-spacing: 8px;
@@ -95,7 +82,8 @@
     .keypad {
       display: grid;
 
-      grid-template-columns: repeat(3, 60px);
+      grid-template-columns:
+        repeat(3, 60px);
 
       gap: 10px;
 
@@ -117,9 +105,7 @@
 
       cursor: pointer;
 
-      transition:
-        background 0.2s,
-        transform 0.1s;
+      transition: 0.2s;
     }
 
     .key:hover {
@@ -155,8 +141,6 @@
 
       text-align: left;
 
-      font-family: Arial, sans-serif;
-
       line-height: 1.6;
 
       box-shadow:
@@ -180,8 +164,6 @@
 
     .notepad p {
 
-      font-family: Arial, sans-serif;
-
       color: #4a3040;
 
       text-align: justify;
@@ -200,7 +182,7 @@
 
       display: block;
 
-      margin: 0 auto 15px auto;
+      margin: 0 auto 18px auto;
 
       background-color: #f8bbd0;
 
@@ -208,7 +190,7 @@
 
       border-radius: 25px;
 
-      padding: 10px 20px;
+      padding: 11px 22px;
 
       font-size: 16px;
 
@@ -216,9 +198,7 @@
 
       cursor: pointer;
 
-      transition:
-        0.2s,
-        transform 0.2s;
+      transition: 0.2s;
     }
 
     .music-button:hover {
@@ -235,6 +215,26 @@
 
 
     /* =========================
+       YOUTUBE OCULTO
+       ========================= */
+
+    #youtubePlayer {
+
+      position: fixed;
+
+      width: 1px;
+      height: 1px;
+
+      left: -100px;
+      top: -100px;
+
+      opacity: 0;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================
        PÉTALOS
        ========================= */
 
@@ -243,11 +243,9 @@
       position: fixed;
 
       top: 0;
-
       left: 0;
 
       width: 100%;
-
       height: 100%;
 
       pointer-events: none;
@@ -264,7 +262,6 @@
       top: -50px;
 
       width: 18px;
-
       height: 18px;
 
       background: #ff9eb5;
@@ -278,10 +275,6 @@
         fall linear forwards;
     }
 
-
-    /* =========================
-       ANIMACIÓN DE PÉTALOS
-       ========================= */
 
     @keyframes fall {
 
@@ -344,12 +337,6 @@
         line-height: 1.55;
       }
 
-      .keypad {
-
-        grid-template-columns:
-          repeat(3, 58px);
-      }
-
       .key {
 
         padding: 14px;
@@ -365,22 +352,14 @@
 
 
   <!-- =========================
-       MÚSICA
+       REPRODUCTOR DE YOUTUBE
        ========================= -->
 
-  <audio id="backgroundMusic" loop>
-
-    <source
-      src="te-comparto.mp3"
-      type="audio/mpeg">
-
-    Tu navegador no soporta audio.
-
-  </audio>
+  <div id="youtubePlayer"></div>
 
 
   <!-- =========================
-       CONTENEDOR DE PÉTALOS
+       PÉTALOS
        ========================= -->
 
   <div id="petals"></div>
@@ -398,7 +377,6 @@
     <h2>
       🔒 Enter password
     </h2>
-
 
     <div class="hint">
 
@@ -521,14 +499,13 @@
 
 
   <!-- =========================
-       PANTALLA DE LA CARTA
+       CARTA
        ========================= -->
 
   <div
     id="notepadScreen"
     class="screen"
   >
-
 
     <div class="notepad">
 
@@ -552,7 +529,6 @@
       <p>
 
         Feliz Día de la Novia, mi amor. ❤️
-
         Hoy quería regalarte algo más que unas palabras;
         quería regalarte un pedacito de mi corazón.
 
@@ -630,8 +606,11 @@
 
 
   <!-- =========================
-       JAVASCRIPT
+       YOUTUBE API
        ========================= -->
+
+  <script src="https://www.youtube.com/iframe_api"></script>
+
 
   <script>
 
@@ -640,15 +619,13 @@
        CONTRASEÑA
        ========================= */
 
-    const correctPassword = '060625';
+    const correctPassword = "060625";
 
-    let input = '';
+    let input = "";
 
 
     function enterDigit(digit) {
 
-
-      // Máximo 6 números
 
       if (input.length >= 6) {
 
@@ -662,23 +639,16 @@
 
       const display =
         document.getElementById(
-          'inputDisplay'
+          "inputDisplay"
         );
 
 
       display.textContent =
         input.padEnd(
           6,
-          '•'
+          "•"
         );
 
-
-      /*
-        IMPORTANTE:
-
-        Solo comprobamos la contraseña
-        cuando ya existen 6 números.
-      */
 
       if (input.length === 6) {
 
@@ -686,73 +656,23 @@
         if (input === correctPassword) {
 
 
-          /*
-            Cambiar pantalla
-          */
-
           document
             .getElementById(
-              'passwordScreen'
+              "passwordScreen"
             )
             .classList
-            .remove('active');
+            .remove("active");
 
 
           document
             .getElementById(
-              'notepadScreen'
+              "notepadScreen"
             )
             .classList
-            .add('active');
+            .add("active");
 
-
-          /*
-            Iniciar pétalos
-          */
 
           startPetals();
-
-
-          /*
-            Intentar iniciar música
-          */
-
-          const music =
-            document.getElementById(
-              'backgroundMusic'
-            );
-
-
-          music.volume = 0.5;
-
-
-          music.play()
-            .then(() => {
-
-              document
-                .getElementById(
-                  'musicButton'
-                )
-                .textContent =
-                '⏸️ Pausar música';
-
-            })
-            .catch(() => {
-
-              /*
-                Si el navegador bloquea
-                el autoplay, el usuario
-                puede utilizar el botón.
-              */
-
-              document
-                .getElementById(
-                  'musicButton'
-                )
-                .textContent =
-                '🎵 Reproducir música';
-
-            });
 
 
         }
@@ -761,15 +681,15 @@
 
 
           alert(
-            'Contraseña incorrecta, intenta de nuevo ❤️'
+            "Contraseña incorrecta, intenta de nuevo ❤️"
           );
 
 
-          input = '';
+          input = "";
 
 
           display.textContent =
-            '••••••';
+            "••••••";
 
         }
 
@@ -779,14 +699,13 @@
 
 
     /* =========================
-       BORRAR NÚMERO
+       BORRAR
        ========================= */
 
     function deleteDigit() {
 
 
       if (input.length > 0) {
-
 
         input =
           input.slice(
@@ -797,12 +716,12 @@
 
         document
           .getElementById(
-            'inputDisplay'
+            "inputDisplay"
           )
           .textContent =
           input.padEnd(
             6,
-            '•'
+            "•"
           );
 
       }
@@ -812,41 +731,111 @@
 
 
     /* =========================
-       CONTROL DE MÚSICA
+       YOUTUBE
+       ========================= */
+
+    let player;
+
+    let youtubeReady = false;
+
+
+    /*
+      Este es el ID del video oficial:
+
+      https://www.youtube.com/watch?v=-7SRXB2DUAQ
+    */
+
+
+    function onYouTubeIframeAPIReady() {
+
+
+      player =
+        new YT.Player(
+          "youtubePlayer",
+          {
+
+            height: "1",
+
+            width: "1",
+
+            videoId:
+              "-7SRXB2DUAQ",
+
+            playerVars: {
+
+              autoplay: 0,
+
+              controls: 0,
+
+              loop: 1,
+
+              playlist:
+                "-7SRXB2DUAQ",
+
+              playsinline: 1
+
+            },
+
+            events: {
+
+              onReady: function() {
+
+                youtubeReady = true;
+
+              }
+
+            }
+
+          }
+        );
+
+    }
+
+
+    /* =========================
+       BOTÓN DE MÚSICA
        ========================= */
 
     function toggleMusic() {
 
 
-      const music =
-        document.getElementById(
-          'backgroundMusic'
-        );
-
-
       const button =
         document.getElementById(
-          'musicButton'
+          "musicButton"
         );
 
 
-      if (music.paused) {
+      if (!youtubeReady) {
+
+        alert(
+          "La música todavía está cargando. Espera un momento y vuelve a intentarlo ❤️"
+        );
+
+        return;
+
+      }
 
 
-        music.play()
-          .then(() => {
+      const state =
+        player.getPlayerState();
 
-            button.textContent =
-              '⏸️ Pausar música';
 
-          })
-          .catch(() => {
+      /*
+        1 = reproduciendo
+        2 = pausado
+      */
 
-            alert(
-              'No se pudo reproducir la música. Verifica que "te-comparto.mp3" esté en la misma carpeta que este archivo HTML.'
-            );
 
-          });
+      if (
+        state !== YT.PlayerState.PLAYING
+      ) {
+
+
+        player.playVideo();
+
+
+        button.textContent =
+          "⏸️ Pausar música";
 
 
       }
@@ -854,11 +843,11 @@
       else {
 
 
-        music.pause();
+        player.pauseVideo();
 
 
         button.textContent =
-          '🎵 Reproducir música';
+          "🎵 Reproducir música";
 
       }
 
@@ -872,7 +861,7 @@
 
     const petalsContainer =
       document.getElementById(
-        'petals'
+        "petals"
       );
 
 
@@ -884,30 +873,22 @@
 
       const petal =
         document.createElement(
-          'div'
+          "div"
         );
 
 
       petal.classList.add(
-        'petal'
+        "petal"
       );
 
-
-      /*
-        Posición horizontal
-      */
 
       petal.style.left =
         Math.random()
         *
         window.innerWidth
         +
-        'px';
+        "px";
 
-
-      /*
-        Tamaño aleatorio
-      */
 
       const size =
         Math.random()
@@ -918,16 +899,12 @@
 
 
       petal.style.width =
-        size + 'px';
+        size + "px";
 
 
       petal.style.height =
-        size + 'px';
+        size + "px";
 
-
-      /*
-        Velocidad aleatoria
-      */
 
       const duration =
         Math.random()
@@ -938,7 +915,7 @@
 
 
       petal.style.animationDuration =
-        duration + 's';
+        duration + "s";
 
 
       petalsContainer.appendChild(
@@ -946,16 +923,15 @@
       );
 
 
-      /*
-        Eliminar pétalo
-        cuando termina
-      */
+      setTimeout(
+        () => {
 
-      setTimeout(() => {
+          petal.remove();
 
-        petal.remove();
+        },
 
-      }, duration * 1000);
+        duration * 1000
+      );
 
     }
 
@@ -973,11 +949,6 @@
       petalsStarted = true;
 
 
-      /*
-        Crear pétalos
-        cada 300 ms
-      */
-
       setInterval(
         createPetal,
         300
@@ -987,6 +958,10 @@
 
 
   </script>
+
+
+</body>
+</html>
 
 
 </body>
