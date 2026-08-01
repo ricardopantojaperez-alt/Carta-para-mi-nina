@@ -1,32 +1,59 @@
-<!DOCTYPE html> 
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Carta para mi niña</title>
+
   <style>
-   <audio id="backgroundMusic" loop>
-  <source src="te-comparto.mp3" type="audio/mpeg">
-</audio>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-  font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       background-color: #fce4ec;
+      overflow: hidden;
     }
+
+    /* Música */
+    #backgroundMusic {
+      display: none;
+    }
+
+    /* Pantallas */
     .screen {
       display: none;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      width: 100%;
       text-align: center;
+      background-color: #fce4ec;
     }
+
     .active {
       display: flex;
     }
+
+    /* Pantalla de contraseña */
     .password-screen {
       flex-direction: column;
+      padding: 20px;
     }
+
+    .password-screen h2 {
+      color: #ad1457;
+    }
+
+    .hint {
+      color: #880e4f;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
     .keypad {
       display: grid;
       grid-template-columns: repeat(3, 60px);
@@ -34,6 +61,7 @@
       margin-top: 20px;
       justify-content: center;
     }
+
     .key {
       background-color: #f8bbd0;
       border: none;
@@ -41,198 +69,306 @@
       font-size: 20px;
       padding: 15px;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.1s;
     }
+
     .key:hover {
       background-color: #f48fb1;
     }
+
+    .key:active {
+      transform: scale(0.95);
+    }
+
     .input-display {
       font-size: 24px;
       margin-top: 20px;
       letter-spacing: 8px;
+      color: #880e4f;
+      min-height: 30px;
     }
+
+    /* Carta */
     .notepad {
-  background-color: #f3f0ff;
-  border: 3px solid #f8bbd0;
-  padding: 20px;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 500px;
-  text-align: left;
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
-   .notepad h3,
-.notepad h4,
-.notepad p {
-  font-family: Arial, sans-serif;
-}
-    /* Contenedor de pétalos */
-#petals {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-  z-index: 1;
-}
-/* Cada pétalo */
-.petal{
-    position: absolute;
-    top:-50px;
-    width:18px;
-    height:18px;
-    background:#ff9eb5;
-    border-radius:0 100% 0 100%;
-    opacity:.9;
-
-    animation: fall linear forwards;
-}
-@keyframes fall {
-  0% {
-    transform: translate(0, -50px) rotate(0deg);
-  }
-
-  25% {
-    transform: translate(-20px, 25vh) rotate(180deg);
-  }
-
-  50% {
-    transform: translate(20px, 50vh) rotate(360deg);
-  }
-
-  75% {
-    transform: translate(-15px, 75vh) rotate(540deg);
-  }
-
-  100% {
-    transform: translate(15px, 110vh) rotate(720deg);
-  }
-}
-
-
-  </style>
-</head>
-<body>
-<div id="petals"></div>
-<div id="passwordScreen" class="screen password-screen active">
-  <h2>🔒 Enter password</h2>
-<div class="hint">
-  💡 <strong>Hint:</strong> Es la fecha cuando nos volvimos novios ❤️
-</div>
-  <div class="input-display" id="inputDisplay">••••••</div>
-  <div class="keypad">
-    <button class="key" onclick="enterDigit('1')">1</button>
-    <button class="key" onclick="enterDigit('2')">2</button>
-    <button class="key" onclick="enterDigit('3')">3</button>
-    <button class="key" onclick="enterDigit('4')">4</button>
-    <button class="key" onclick="enterDigit('5')">5</button>
-    <button class="key" onclick="enterDigit('6')">6</button>
-    <button class="key" onclick="enterDigit('7')">7</button>
-    <button class="key" onclick="enterDigit('8')">8</button>
-    <button class="key" onclick="enterDigit('9')">9</button>
-    <div></div>
-    <button class="key" onclick="enterDigit('0')">0</button>
-    <button class="key" onclick="deleteDigit()">⌫</button>
-    <div></div>
-  </div>
-</div>
-<div id="notepadScreen" class="screen">
-  <div class="notepad">
-   
-    <h4>📅 01 Agosto 2026</h4>
-    <p>
-  Feliz Día de la Novia, mi amor. ❤️ Hoy quería regalarte algo más que unas palabras; quería regalarte un pedacito de mi corazón. 
-  Desde que llegaste a mi vida, todo tiene un significado diferente. Los días son más bonitos, las sonrisas son más sinceras 
-  y cada momento a tu lado se ha convertido en uno de mis lugares favoritos para estar.
-</p>
-
-<p> 
-  Contigo aprendí que amar no solo es decir "te amo", sino estar presente, cuidar, comprender, apoyar y hacer sentir especial a 
-  la persona que tienes a tu lado. Eres esa persona que ilumina incluso mis días más difíciles y quien logra que todo parezca más 
-  sencillo con tan solo una sonrisa.
-</p>
-
-<p>
-  Admiro la mujer tan increíble que eres. Me haces querer ser una mejor persona cada día, no porque me lo pidas, sino porque inspiras
-  la mejor versión de mí. A tu lado encontré paz, felicidad y un amor que deseo cuidar todos los días de mi vida.
-</p>
-
-<p>
-  Espero que este sea solo uno de los muchos Días de la Novia que podamos celebrar juntos. Quiero seguir creando recuerdos contigo, 
-  seguir tomándote de la mano en cada paso que demos y seguir construyendo una historia llena de amor, risas y sueños compartidos.
-</p>
-
-<p>
-  Con mucho amor, Ricardo. ❤️
-</p>
-P.S : Hacer todo esto me tomo mas tiempo del que crei, asi que guárdalo en tu corazón y léelo cada vez que necesites un recordatorio de cuánto te amo.
-
-  </div>
-</div>
-<script>
-  const correctPassword = '060625'; // La contraseña correcta es la fecha en formato DDMMYY
-  let input = '';
-  function enterDigit(digit) {
-    if (input.length < 6) {
-      input += digit;
+      background-color: #f3f0ff;
+      border: 3px solid #f8bbd0;
+      padding: 20px;
+      border-radius: 20px;
+      width: 90%;
+      max-width: 500px;
+      max-height: 85vh;
+      overflow-y: auto;
+      text-align: left;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      box-shadow: 0 8px 25px rgba(173, 20, 87, 0.15);
+      position: relative;
+      z-index: 2;
     }
-    const display = document.getElementById('inputDisplay');
-    display.textContent = input.padEnd(6, '•');
-    if (input === correctPassword) {
-  document.getElementById('passwordScreen').classList.remove('active');
-  document.getElementById('notepadScreen').classList.add('active');
-  startPetals();
 
-  const music = document.getElementById("backgroundMusic");
-  music.volume = 0.5;
-  music.play();
-} else {
-        alert('Contraseña incorrecta, intenta de nuevo');
-        input = '';
-        display.textContent = '••••••';
+    .notepad h4 {
+      color: #ad1457;
+      text-align: center;
+      margin-top: 0;
+    }
+
+    .notepad p {
+      font-family: Arial, sans-serif;
+      color: #4a3040;
+    }
+
+    /* Contenedor de pétalos */
+    #petals {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Cada pétalo */
+    .petal {
+      position: absolute;
+      top: -50px;
+      width: 18px;
+      height: 18px;
+      background: #ff9eb5;
+      border-radius: 0 100% 0 100%;
+      opacity: 0.9;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translate(0, -50px) rotate(0deg);
+      }
+
+      25% {
+        transform: translate(-20px, 25vh) rotate(180deg);
+      }
+
+      50% {
+        transform: translate(20px, 50vh) rotate(360deg);
+      }
+
+      75% {
+        transform: translate(-15px, 75vh) rotate(540deg);
+      }
+
+      100% {
+        transform: translate(15px, 110vh) rotate(720deg);
       }
     }
-  }
-  function deleteDigit() {
-  if (input.length > 0) {
-    input = input.slice(0, -1);
-    document.getElementById('inputDisplay').textContent = input.padEnd(6, '•');
-  }
-  
-}
-const petalsContainer = document.getElementById("petals");
-let petalsStarted = false;
+  </style>
+</head>
 
-function createPetal() {
-  const petal = document.createElement("div");
-  petal.classList.add("petal");
+<body>
 
-  petal.style.left = Math.random() * window.innerWidth + "px";
+  <!-- Música -->
+  <audio id="backgroundMusic" loop>
+    <source src="te-comparto.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
 
-  const size = Math.random() * 15 + 10;
-  petal.style.width = size + "px";
-  petal.style.height = size + "px";
+  <!-- Pétalos -->
+  <div id="petals"></div>
 
-  const duration = Math.random() * 4 + 5;
-  petal.style.animationDuration = duration + "s";
+  <!-- Pantalla de contraseña -->
+  <div id="passwordScreen" class="screen password-screen active">
 
-  
+    <h2>🔒 Enter password</h2>
 
-  petalsContainer.appendChild(petal);
+    <div class="hint">
+      💡 <strong>Hint:</strong> Es la fecha cuando nos volvimos novios ❤️
+    </div>
 
-  setTimeout(() => {
-    petal.remove();
-  }, duration * 1000);
-}
+    <div class="input-display" id="inputDisplay">••••••</div>
 
-function startPetals() {
-  if (petalsStarted) return;
-  petalsStarted = true;
-  setInterval(createPetal, 300);
-}
-</script>
+    <div class="keypad">
+
+      <button class="key" onclick="enterDigit('1')">1</button>
+      <button class="key" onclick="enterDigit('2')">2</button>
+      <button class="key" onclick="enterDigit('3')">3</button>
+
+      <button class="key" onclick="enterDigit('4')">4</button>
+      <button class="key" onclick="enterDigit('5')">5</button>
+      <button class="key" onclick="enterDigit('6')">6</button>
+
+      <button class="key" onclick="enterDigit('7')">7</button>
+      <button class="key" onclick="enterDigit('8')">8</button>
+      <button class="key" onclick="enterDigit('9')">9</button>
+
+      <div></div>
+
+      <button class="key" onclick="enterDigit('0')">0</button>
+
+      <button class="key" onclick="deleteDigit()">⌫</button>
+
+    </div>
+  </div>
+
+  <!-- Carta -->
+  <div id="notepadScreen" class="screen">
+
+    <div class="notepad">
+
+      <h4>📅 01 Agosto 2026</h4>
+
+      <p>
+        Feliz Día de la Novia, mi amor. ❤️ Hoy quería regalarte algo más que unas palabras;
+        quería regalarte un pedacito de mi corazón.
+        Desde que llegaste a mi vida, todo tiene un significado diferente.
+        Los días son más bonitos, las sonrisas son más sinceras y cada momento a tu lado
+        se ha convertido en uno de mis lugares favoritos para estar.
+      </p>
+
+      <p>
+        Contigo aprendí que amar no solo es decir "te amo", sino estar presente,
+        cuidar, comprender, apoyar y hacer sentir especial a la persona que tienes a tu lado.
+        Eres esa persona que ilumina incluso mis días más difíciles y quien logra que todo
+        parezca más sencillo con tan solo una sonrisa.
+      </p>
+
+      <p>
+        Admiro la mujer tan increíble que eres. Me haces querer ser una mejor persona cada día,
+        no porque me lo pidas, sino porque inspiras la mejor versión de mí.
+        A tu lado encontré paz, felicidad y un amor que deseo cuidar todos los días de mi vida.
+      </p>
+
+      <p>
+        Espero que este sea solo uno de los muchos Días de la Novia que podamos celebrar juntos.
+        Quiero seguir creando recuerdos contigo, seguir tomándote de la mano en cada paso que demos
+        y seguir construyendo una historia llena de amor, risas y sueños compartidos.
+      </p>
+
+      <p>
+        Con mucho amor, Ricardo. ❤️
+      </p>
+
+      <p>
+        <strong>P.S:</strong>
+        Hacer todo esto me tomó más tiempo del que creí, así que guárdalo en tu corazón
+        y léelo cada vez que necesites un recordatorio de cuánto te amo.
+      </p>
+
+    </div>
+  </div>
+
+  <script>
+    const correctPassword = '060625';
+    let input = '';
+
+    function enterDigit(digit) {
+
+      // No permitir más de 6 números
+      if (input.length >= 6) {
+        return;
+      }
+
+      input += digit;
+
+      const display = document.getElementById('inputDisplay');
+
+      display.textContent = input.padEnd(6, '•');
+
+      // IMPORTANTE:
+      // Solo comprobar la contraseña cuando ya se escribieron
+      // los 6 números.
+      if (input.length === 6) {
+
+        if (input === correctPassword) {
+
+          document
+            .getElementById('passwordScreen')
+            .classList.remove('active');
+
+          document
+            .getElementById('notepadScreen')
+            .classList.add('active');
+
+          startPetals();
+
+          const music = document.getElementById('backgroundMusic');
+
+          music.volume = 0.5;
+
+          // El navegador permite reproducir el audio porque
+          // esta acción viene directamente del clic del usuario.
+          music.play().catch(error => {
+            console.log('No se pudo reproducir el audio:', error);
+          });
+
+        } else {
+
+          alert('Contraseña incorrecta, intenta de nuevo');
+
+          input = '';
+
+          display.textContent = '••••••';
+        }
+      }
+    }
+
+    function deleteDigit() {
+
+      if (input.length > 0) {
+
+        input = input.slice(0, -1);
+
+        document.getElementById('inputDisplay').textContent =
+          input.padEnd(6, '•');
+      }
+    }
+
+
+    /* =========================
+       PÉTALOS
+       ========================= */
+
+    const petalsContainer = document.getElementById('petals');
+
+    let petalsStarted = false;
+
+    function createPetal() {
+
+      const petal = document.createElement('div');
+
+      petal.classList.add('petal');
+
+      petal.style.left =
+        Math.random() * window.innerWidth + 'px';
+
+      const size =
+        Math.random() * 15 + 10;
+
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+
+      const duration =
+        Math.random() * 4 + 5;
+
+      petal.style.animationDuration =
+        duration + 's';
+
+      petalsContainer.appendChild(petal);
+
+      setTimeout(() => {
+        petal.remove();
+      }, duration * 1000);
+    }
+
+    function startPetals() {
+
+      if (petalsStarted) return;
+
+      petalsStarted = true;
+
+      setInterval(createPetal, 300);
+    }
+  </script>
+
 </body>
 </html>
