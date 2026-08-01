@@ -6,7 +6,7 @@
   <title>Carta para mi niña</title>
   <style>
     <audio id="backgroundMusic" loop>
-  <source src="music/nuestra-cancion.mp3" type="audio/mpeg">
+  <source src="Virlan Garcia - Te Comparto [Official Video].mp3" type="audio/mpeg">
 </audio>
     body {
   font-family: 'Arial', sans-serif;
@@ -181,12 +181,15 @@ P.S : Hacer todo esto me tomo mas tiempo del que crei, asi que guárdalo en tu c
     }
     const display = document.getElementById('inputDisplay');
     display.textContent = input.padEnd(6, '•');
-    if (input.length === 6) {
-      if (input === correctPassword) {
-        document.getElementById('passwordScreen').classList.remove('active');
-        document.getElementById('notepadScreen').classList.add('active');
-        startPetals();
-      } else {
+    if (input === correctPassword) {
+  document.getElementById('passwordScreen').classList.remove('active');
+  document.getElementById('notepadScreen').classList.add('active');
+  startPetals();
+
+  const music = document.getElementById("backgroundMusic");
+  music.volume = 0.5; // volumen al 50%
+  music.play();
+} else {
         alert('Contraseña incorrecta, intenta de nuevo');
         input = '';
         display.textContent = '••••••';
